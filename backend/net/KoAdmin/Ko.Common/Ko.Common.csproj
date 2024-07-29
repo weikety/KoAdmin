@@ -6,4 +6,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="SqlSugarCore" Version="5.1.4.167-preview11" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Components\" />
+    </ItemGroup>
+
 </Project>

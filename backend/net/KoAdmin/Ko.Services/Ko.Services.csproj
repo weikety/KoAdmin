@@ -7,7 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Interface\" />
+      <Folder Include="Interface\Sys\" />
+      <Folder Include="Sys\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Ko.Repositories\Ko.Repositories.csproj" />
     </ItemGroup>
 
 </Project>
