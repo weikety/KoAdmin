@@ -1,6 +1,8 @@
 namespace Ko.Common.Components.SqlSugar;
-
-public class SqlSugarFilter
+/// <summary>
+/// SqlSugar过滤器
+/// </summary>
+public static class SqlSugarFilter
 {
     
 }

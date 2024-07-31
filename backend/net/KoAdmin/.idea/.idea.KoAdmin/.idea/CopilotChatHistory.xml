@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotChatHistory">
+    <option name="conversations">
+      <list>
+        <Conversation>
+          <option name="createTime" value="1722327853870" />
+          <option name="id" value="bcab18e4-6aa1-466a-abbf-6a3faeb57db4" />
+          <option name="title" value="@workspace /comments " />
+          <option name="turns">
+            <list>
+              <Turn>
+                <option name="agent" value="workspace" />
+                <option name="answer" value="在您提供的代码段中，我们可以看到各种数据库类型的枚举值。以下是用中文添加的注释：&#10;&#10;```qhlm&#10;// 定义数据库类型枚举值&#10;// NbHjo = 9,    // NbHJO数据库&#10;// HjoHvievi = 8, // HJO Hvievi数据库&#10;// Hjorgv = 7,   // HJOrgv数据库&#10;// Lizxov = 6,   // Lizxov数据库&#10;// KlhgtivHJO = 5, // KlhgtivHJO数据库&#10;// Wn = 4,       // 达梦数据库&#10;// Pwymwk = 3,   // 人大金仓数据库&#10;```" />
+                <option name="chatResource" value="codeAction" />
+                <option name="codeReferences">
+                  <list>
+                    <CodeReferencesBean>
+                      <option name="content" value="// NbHjo = 9,    HjoHvievi = 8,    Hjorgv = 7,    Lizxov = 6,    KlhgtivHJO = 5,    Wn = 4,达梦    Pwymwk = 3,人大金仓" />
+                      <option name="end_line" value="12" />
+                      <option name="filename" value="appsettings.json" />
+                      <option name="language" value="JSON" />
+                      <option name="range">
+                        <Range>
+                          <option name="end">
+                            <Position>
+                              <option name="character" value="135" />
+                              <option name="line" value="12" />
+                            </Position>
+                          </option>
+                          <option name="start">
+                            <Position>
+                              <option name="character" value="23" />
+                              <option name="line" value="12" />
+                            </Position>
+                          </option>
+                        </Range>
+                      </option>
+                      <option name="start_line" value="12" />
+                      <option name="url" value="file:///E:/Git/KoAdmin/backend/net/KoAdmin/Ko.Api.Admin/appsettings.json" />
+                    </CodeReferencesBean>
+                  </list>
+                </option>
+                <option name="command" value="comments" />
+                <option name="conversationId" value="157ffa04-6951-4b45-9a6e-f06659c737c0" />
+                <option name="messageId" value="8990d3ab-43df-4ed5-867c-28553e075a01" />
+                <option name="question" value="" />
+                <option name="rating" value="UNRATED" />
+                <option name="status" value="SUCCESS" />
+              </Turn>
+            </list>
+          </option>
+          <option name="updateTime" value="1722327861031" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1722230076049" />
+          <option name="id" value="df06d4a1-8c00-4414-8607-57d45fd8ab91" />
+          <option name="title" value="新对话 2024年7月29日 13:14:36" />
+          <option name="updateTime" value="1722230076049" />
+        </Conversation>
+        <Conversation>
+          <option name="createTime" value="1722176552428" />
+          <option name="id" value="1cfae4df-6ed5-4db4-8f7e-48cf520b5b27" />
+          <option name="title" value="新对话 2024年7月28日 22:22:32" />
+          <option name="updateTime" value="1722176552428" />
+        </Conversation>
+      </list>
+    </option>
+  </component>
+</project>

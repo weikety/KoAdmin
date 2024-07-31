@@ -3,7 +3,7 @@ namespace Ko.Repositories.Entity;
 /// <summary>
 /// 软删除 过滤器
 /// </summary>
-internal interface IDeletedFilter
+public interface IDeletedFilter
 {
     /// <summary>
     /// 软删除

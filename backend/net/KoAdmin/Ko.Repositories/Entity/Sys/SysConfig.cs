@@ -1,4 +1,4 @@
-namespace Ko.Repositories.Entity.Sys;
+namespace Ko.Repositories.Entity;
 
 /// <summary>
 /// 系统参数配置表
