@@ -1,48 +1,48 @@
-using Ko.Common.Components.DependencyInjection;
-
 var builder = WebApplication.CreateBuilder(args);
 
 //进行配置注册 | 添加静态文件读取(优先级比较高)
-AppSettings.AddConfigStartup(builder.Configuration);
+AppConfig.AddConfigStartup(builder.Configuration);
 
-// //进行选项注册
-// builder.Services.AddConfigureSetup(builder.Configuration);
-// // 注册redis缓存
-// builder.Services.AddRedisSetup();
-// //HttpContext
-// builder.Services.AddHttpContextAccessor();
-// // 添加过滤器
-// builder.Services.AddControllers(options => 
-//     {
-//         // 全局异常过滤
-//         options.Filters.Add<GlobalExceptionFilter>();
-//         // 日志过滤器
-//         options.Filters.Add<RequestActionFilter>();
-//     })
-// // 配置Api行为选项
-//     .ConfigureApiBehaviorOptions(options =>
-//     {
-//         // 禁用默认模型验证过滤器
-//         options.SuppressModelStateInvalidFilter = true;
-//     });
+//数据库注入
+Func<IServiceProvider, IFreeSql> fsqlFactory = r =>
+{
+    IFreeSql fsql = new FreeSql.FreeSqlBuilder()
+        .UseConnectionString(FreeSql.DataType.MySql, AppConfig.Database.ConnectionString)
+        .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}"))
+        .UseAutoSyncStructure(true) //自动同步实体结构到数据库，只有CRUD时才会生成表   谨慎、谨慎、谨慎在生产环境中使用 UseAutoSyncStructure
+        .Build();
+    return fsql;
+};
+builder.Services.AddSingleton(fsqlFactory);
+builder.Services.AddFreeRepository();//仓储注入
 
-// 添加SqlSugar
-builder.Services.AddSqlSugarSetup();
+//动态API
+builder.Services.AddDynamicApi(options =>
+{
+    options.NamingConvention = NamingConventionEnum.CamelCase;// 接口以小驼峰方式命名
+    options.DefaultApiPrefix = "api"; // 指定全局默认的 api 前缀
+    options.RemoveActionPostfixes.Clear();//清空API结尾，不删除API结尾;若不清空 CreatUserAsync 将变为 CreateUser
+    options.GetRestFulActionName = (actionName) => actionName; // 自定义 ActionName 处理函数;
+});
 
-// 自动添加服务层
-builder.Services.AddAutoServices("Ko.Services");
+//API文档
+//builder.Services.AddSwaggerGen();
+//
+
+//
+
+//
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    //app.UseSwagger();
+    //app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 

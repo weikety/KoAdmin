@@ -1,97 +1,110 @@
+
 namespace Ko.Repositories.Entity;
 
 /// <summary>
 /// 基类Id
 /// </summary>
-public abstract class EntityBaseId
+public class EntityBaseId
 {
     /// <summary>
     /// Id
-    /// 主键、自增
+    /// 主键
+    /// 雪花ID var newId = YitIdHelper.NextId();
     /// </summary>
-    [SugarColumn(ColumnDescription = "主键Id", IsPrimaryKey = true, IsIdentity = true)]
-    public virtual long Id { get; set; }
+    [Column(IsPrimary = true)]
+    [Description("主键Id")]
+    public long Id { get; set; }
 }
 
 /// <summary>
 /// 基类
 /// </summary>
-[SugarIndex("index_{table}_ct", nameof(CreateTime), OrderByType.Asc)]
-[SugarIndex("index_{table}_ut", nameof(UpdateTime), OrderByType.Asc)]
-public class BaseEntity : EntityBaseId,IDeletedFilter
+[Index("index_{tablename}_ct", "CreateTime desc")]
+[Index("index_{tablename}_ut", "UpdateTime desc")]
+public class BaseEntity : EntityBaseId
 {
     /// <summary>
     /// 创建时间
     /// </summary>
-    [SugarColumn(ColumnDescription = "创建时间", IsNullable = true, IsOnlyIgnoreUpdate = true, InsertServerTime = true)]
-    public virtual DateTime CreateTime { get; set; }
+    [Column(ServerTime = DateTimeKind.Utc, CanUpdate = false)]
+    [Description("创建时间")]
+    public DateTime CreateTime { get; set; }
 
     /// <summary>
     /// 更新时间
     /// </summary>
-    [SugarColumn(ColumnDescription = "更新时间", IsOnlyIgnoreInsert = true, UpdateServerTime = true)]
-    public virtual DateTime? UpdateTime { get; set; }
+    [Column(ServerTime = DateTimeKind.Utc)]
+    [Description("更新时间")]
+    public DateTime? UpdateTime { get; set; }
     
     /// <summary>
     /// 删除时间
     /// </summary>
-    [SugarColumn(ColumnDescription = "删除时间", IsOnlyIgnoreInsert = true)]
-    public virtual DateTime? DeleteTime { get; set; }
+    [Column(CanInsert = false)]
+    [Description("删除时间")]
+    public DateTime? DeleteTime { get; set; }
 
     /// <summary>
     /// 创建者Id
     /// </summary>
-    [SugarColumn(ColumnDescription = "创建者Id", IsOnlyIgnoreUpdate = true)]
-    public virtual long? CreateUserId { get; set; }
+    [Column(CanUpdate = false)]
+    [Description("创建者Id")]
+    public long? CreateUserId { get; set; }
 
     /// <summary>
     /// 创建者姓名
     /// </summary>
-    [SugarColumn(ColumnDescription = "创建者姓名", Length = 64, IsOnlyIgnoreUpdate = true)]
-    public virtual string? CreateUserName { get; set; }
+    [Column(CanUpdate = false)]
+    [Description("创建者姓名")]
+    public string? CreateUserName { get; set; }
 
     /// <summary>
     /// 修改者Id
     /// </summary>
-    [SugarColumn(ColumnDescription = "修改者Id")]
-    public virtual long? UpdateUserId { get; set; }
+    [Column(CanInsert = false)]
+    [Description("修改者Id")]
+    public long? UpdateUserId { get; set; }
 
     /// <summary>
     /// 修改者姓名
     /// </summary>
-    [SugarColumn(ColumnDescription = "修改者姓名", Length = 64)]
-    public virtual string? UpdateUserName { get; set; }
+    [Column(CanInsert = false)]
+    [Description("修改者姓名")]
+    public string? UpdateUserName { get; set; }
 
     /// <summary>
     /// 删除者Id
     /// </summary>
-    [SugarColumn(ColumnDescription = "删除者Id", IsOnlyIgnoreUpdate = true)]
-    public virtual long? DeleteUserId { get; set; }
+    [Column(CanInsert = false)]
+    [Description("删除者Id")]
+    public long? DeleteUserId { get; set; }
 
     /// <summary>
     /// 删除者姓名
     /// </summary>
-    [SugarColumn(ColumnDescription = "删除者姓名", Length = 64, IsOnlyIgnoreUpdate = true)]
-    public virtual string? DeleteUserName { get; set; }
-    
+    [Column(CanInsert = false)]
+    [Description("删除者姓名")]
+    public string? DeleteUserName { get; set; }
+
     /// <summary>
     /// 软删除
     /// </summary>
-    [SugarColumn(ColumnDescription = "软删除")]
-    public virtual bool IsDelete { get; set; } = false;
+    [Description("软删除")]
+    public bool IsDelete { get; set; } = false;
 
 }
 
 /// <summary>
 /// 业务数据基类（数据权限）
 /// </summary>
-public abstract class BaseEntityData : BaseEntity, IOrgIdFilter
+public abstract class BaseEntityData : BaseEntity
 {
     /// <summary>
     /// 创建者部门Id
     /// </summary>
-    [SugarColumn(ColumnDescription = "创建者部门Id", IsOnlyIgnoreUpdate = true)]
-    public virtual long? CreateOrgId { get; set; }
+    [Column(CanUpdate = false)]
+    [Description("创建者部门Id")]
+    public long? CreateOrgId { get; set; }
 
     // /// <summary>
     // /// 创建者部门
@@ -99,12 +112,13 @@ public abstract class BaseEntityData : BaseEntity, IOrgIdFilter
     // [Newtonsoft.Json.JsonIgnore]
     // [System.Text.Json.Serialization.JsonIgnore]
     // [Navigate(NavigateType.OneToOne, nameof(CreateOrgId))]
-    // public virtual SysOrg CreateOrg { get; set; }
+    // public SysOrg CreateOrg { get; set; }
 
     /// <summary>
     /// 创建者部门名称
     /// </summary>
-    [SugarColumn(ColumnDescription = "创建者部门名称", Length = 64, IsOnlyIgnoreUpdate = true)]
-    public virtual string? CreateOrgName { get; set; }
+    [Column(CanUpdate = false)]
+    [Description("创建者部门名称")]
+    public string? CreateOrgName { get; set; }
 }
 

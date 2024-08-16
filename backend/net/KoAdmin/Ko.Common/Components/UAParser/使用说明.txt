@@ -1,0 +1,52 @@
+﻿开源地址：https://github.com/w8tcha/uap-csharp/
+
+第一步
+Startup.cs
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add user agent service
+    services.AddUserAgentParser();
+
+    services.AddMvc();
+}
+
+第二部
+控制器注入 IUserAgentParser
+public class HomeController : Controller
+{
+    private readonly IUserAgentParser userAgentParser;
+    public HomeController(IUserAgentParser parser)
+    {
+        this.userAgentParser = parser;
+    }
+    public IActionResult Index()
+    {
+        var clientInfo = this.userAgentParser.ClientInfo;
+        // Use ClientInfo object as needed.
+
+        return View();
+    }
+}
+
+也可以在 InvokeAsync 方法中注入
+public class MyCustomMiddleware
+{
+    private RequestDelegate next;
+    public MyCustomMiddleware(RequestDelegate next)
+    {
+        this.next = next;
+    }
+    public async Task InvokeAsync(HttpContext httpContext, IUserAgentParser parser)
+    {
+        var clientInfo = parser.ClientInfo;
+
+        if (clientInfo.Browser.Family == "Edge")
+        {
+            await httpContext.Response.WriteAsync("Have you tried the new chromuim based edge ?");
+        }
+        else
+        {
+            await this.next.Invoke(httpContext);
+        }
+    }
+}

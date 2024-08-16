@@ -1,5 +1,8 @@
 namespace Ko.Common.Extension;
 
+/// <summary>
+/// 类型转换
+/// </summary>
 public static class ConvertExtension
 {
     /// <summary>
