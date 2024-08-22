@@ -1,30 +1,26 @@
-﻿namespace DynamicApi;
+﻿using System.Reflection;
+using System.Text.RegularExpressions;
+using DynamicApi.Attributes;
+using DynamicApi.Enums;
+using DynamicApi.Helpers;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-/// <summary>
-/// 
-/// </summary>
+namespace DynamicApi;
+
 public class DynamicApiConvention : IApplicationModelConvention
 {
     private readonly ISelectController _selectController;
     private readonly IActionRouteFactory _actionRouteFactory;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="selectController"></param>
-    /// <param name="actionRouteFactory"></param>
     public DynamicApiConvention(ISelectController selectController, IActionRouteFactory actionRouteFactory)
     {
         _selectController = selectController;
         _actionRouteFactory = actionRouteFactory;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="value"></param>
-    /// <param name="namingConvention"></param>
-    /// <returns></returns>
     public string GetSeparateWords(string value, NamingConventionEnum namingConvention = NamingConventionEnum.KebabCase)
     {
         if (string.IsNullOrWhiteSpace(value))
@@ -49,12 +45,6 @@ public class DynamicApiConvention : IApplicationModelConvention
             .ToLower();
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="value"></param>
-    /// <param name="namingConvention"></param>
-    /// <returns></returns>
     public string GetFormatName(string value, NamingConventionEnum namingConvention = NamingConventionEnum.KebabCase)
     {
         if (namingConvention == NamingConventionEnum.KebabCase ||
@@ -75,10 +65,6 @@ public class DynamicApiConvention : IApplicationModelConvention
         return value;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="application"></param>
     public void Apply(ApplicationModel application)
     {
         foreach (var controller in application.Controllers)
@@ -128,12 +114,6 @@ public class DynamicApiConvention : IApplicationModelConvention
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="controller"></param>
-    /// <param name="attr"></param>
-    /// <exception cref="ArgumentException"></exception>
     private void ConfigureArea(ControllerModel controller, DynamicApiAttribute attr)
     {
         if (!controller.RouteValues.ContainsKey("area"))
@@ -155,11 +135,6 @@ public class DynamicApiConvention : IApplicationModelConvention
 
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="controller"></param>
-    /// <param name="controllerAttr"></param>
     private void ConfigureDynamicApi(ControllerModel controller, DynamicApiAttribute controllerAttr)
     {
         ConfigureApiExplorer(controller);
@@ -171,10 +146,6 @@ public class DynamicApiConvention : IApplicationModelConvention
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="controller"></param>
     private void ConfigureFormatResult(ControllerModel controller)
     {
         foreach (var action in controller.Actions)
@@ -188,11 +159,7 @@ public class DynamicApiConvention : IApplicationModelConvention
             }
         }
     }
-    
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="controller"></param>
+
     private void ConfigureParameters(ControllerModel controller)
     {
         foreach (var action in controller.Actions)
@@ -216,12 +183,7 @@ public class DynamicApiConvention : IApplicationModelConvention
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="action"></param>
-    /// <param name="parameter"></param>
-    /// <returns></returns>
+
     private bool CanUseFormBodyBinding(ActionModel action, ParameterModel parameter)
     {
         if (AppConsts.FormBodyBindingIgnoredTypes.Any(t => t.IsAssignableFrom(parameter.ParameterInfo.ParameterType)))

@@ -1,78 +1,37 @@
-﻿namespace DynamicApi;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
+using DynamicApi.Enums;
 
-/// <summary>
-/// 
-/// </summary>
+namespace DynamicApi;
+
 public static class AppConsts
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public static string DefaultHttpVerb { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public static string DefaultAreaName { get; set; }
+    public static string DefaultAreaName { get; set; } 
 
-    /// <summary>
-    /// 
-    /// </summary>
     public static string DefaultApiPreFix { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public static List<string> ControllerPostfixes { get; set; }
-
-    /// <summary>
-    /// 
-    /// </summary>
     public static List<string> ActionPostfixes { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public static List<Type> FormBodyBindingIgnoredTypes { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public static Dictionary<string,string> HttpVerbs { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public static NamingConventionEnum NamingConvention { get; set; } = NamingConventionEnum.KebabCase;
 
-    /// <summary>
-    /// 
-    /// </summary>
     public static Func<string, string> GetRestFulControllerName { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public static Func<string, string> GetRestFulActionName { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public static Dictionary<Assembly, AssemblyDynamicApiOptions> AssemblyDynamicApiOptions { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public static bool FormatResult { get; set; } = true;
 
-    /// <summary>
-    /// 
-    /// </summary>
     public static Type FormatResultType { get; set; } = FormatResultContext.FormatResultType;
 
-    /// <summary>
-    /// 
-    /// </summary>
     static AppConsts()
     {
         HttpVerbs=new Dictionary<string, string>()

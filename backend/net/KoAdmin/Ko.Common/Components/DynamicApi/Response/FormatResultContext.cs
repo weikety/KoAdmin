@@ -1,8 +1,7 @@
-﻿namespace DynamicApi;
+﻿using System;
 
-/// <summary>
-/// 
-/// </summary>
+namespace DynamicApi;
+
 public static class FormatResultContext
 {
     internal static Type FormatResultType = typeof(ResponseResult<>);

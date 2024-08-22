@@ -14,6 +14,9 @@
 // limitations under the License.
 //
 
+using System.Text.RegularExpressions;
+using UAParser.Objects;
+
 namespace UAParser;
 
 

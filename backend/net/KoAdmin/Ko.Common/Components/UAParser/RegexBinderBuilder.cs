@@ -14,6 +14,8 @@
 // limitations under the License.
 //
 
+using System.Text.RegularExpressions;
+
 namespace UAParser;
 
 internal static class RegexBinderBuilder

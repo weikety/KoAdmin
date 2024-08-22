@@ -1,8 +1,9 @@
-﻿namespace DynamicApi.Attributes;
+﻿using System;
+using System.Reflection;
+using DynamicApi.Helpers;
 
-/// <summary>
-/// 
-/// </summary>
+namespace DynamicApi.Attributes;
+
 [Serializable]
 [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class)]
 public class DynamicApiAttribute : Attribute

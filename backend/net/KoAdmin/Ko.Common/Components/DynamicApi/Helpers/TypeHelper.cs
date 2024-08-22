@@ -1,8 +1,8 @@
+using System;
+using System.Reflection;
+
 namespace DynamicApi.Helpers;
 
-/// <summary>
-/// 
-/// </summary>
 internal static class TypeHelper
 {
     public static bool IsFunc(object obj)

@@ -1,8 +1,10 @@
-﻿namespace DynamicApi.Helpers;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
-/// <summary>
-/// 
-/// </summary>
+namespace DynamicApi.Helpers;
+
 internal static class ExtensionMethods
 {
     public static bool IsNullOrEmpty(this string str)

@@ -1,8 +1,5 @@
 ﻿namespace DynamicApi.Enums;
 
-/// <summary>
-/// 输出格式化
-/// </summary>
 public enum NamingConventionEnum
 {
     /// <summary>

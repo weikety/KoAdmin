@@ -1,0 +1,10 @@
+global using DynamicApi;
+global using DynamicApi.Attributes;
+global using Ko.Services.Base;
+global using Ko.Services.Core;
+global using Ko.Repositories.Entity;
+global using FreeSql;
+global using Ko.Common.Exceptions;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Mvc;
+global using System.Net;

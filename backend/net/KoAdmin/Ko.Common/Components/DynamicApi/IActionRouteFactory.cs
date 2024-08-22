@@ -1,17 +1,10 @@
-﻿namespace DynamicApi;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
-/// <summary>
-/// 
-/// </summary>
+namespace DynamicApi;
+
 public interface IActionRouteFactory
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="areaName"></param>
-    /// <param name="controllerName"></param>
-    /// <param name="action"></param>
-    /// <returns></returns>
     string CreateActionRouteModel(string areaName, string controllerName, ActionModel action);
 }
 

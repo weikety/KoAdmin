@@ -1,15 +1,12 @@
-﻿namespace DynamicApi;
+﻿using DynamicApi.Attributes;
+using DynamicApi.Helpers;
+using System;
+using System.Reflection;
 
-/// <summary>
-/// 
-/// </summary>
+namespace DynamicApi;
+
 public interface ISelectController
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="type"></param>
-    /// <returns></returns>
     bool IsController(Type type);
 }
 

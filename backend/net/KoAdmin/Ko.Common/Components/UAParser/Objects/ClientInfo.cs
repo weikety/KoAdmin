@@ -14,6 +14,8 @@
 // limitations under the License.
 //
 
+using UAParser.Interfaces;
+
 namespace UAParser.Objects;
 
 

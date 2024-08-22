@@ -1,13 +1,13 @@
-﻿namespace DynamicApi;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
+using Microsoft.AspNetCore.Http;
+using DynamicApi.Enums;
 
-/// <summary>
-/// 
-/// </summary>
+namespace DynamicApi;
+
 public class DynamicApiOptions
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public DynamicApiOptions()
     {
         RemoveControllerPostfixes = new List<string>() { "AppService", "ApplicationService", "ApiController", "Controller", "Services", "Service" };
@@ -26,9 +26,6 @@ public class DynamicApiOptions
     /// </summary>
     public string DefaultHttpVerb { get; set; }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public string DefaultAreaName { get; set; }
 
     /// <summary>
@@ -80,14 +77,8 @@ public class DynamicApiOptions
     public ISelectController SelectController { get; set; } = new DefaultSelectController();
     public IActionRouteFactory ActionRouteFactory { get; set; } = new DefaultActionRouteFactory();
 
-    /// <summary>
-    /// 
-    /// </summary>
     public bool FormatResult { get; set; } = true;
 
-    /// <summary>
-    /// 
-    /// </summary>
     public Type FormatResultType { get; set; } = FormatResultContext.FormatResultType;
 
     /// <summary>

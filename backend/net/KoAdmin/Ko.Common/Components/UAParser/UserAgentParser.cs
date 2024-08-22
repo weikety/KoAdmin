@@ -14,6 +14,11 @@
 // limitations under the License.
 //
 
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Caching.Memory;
+using UAParser.Interfaces;
+using UAParser.Objects;
+
 namespace UAParser;
 
 /// <summary>

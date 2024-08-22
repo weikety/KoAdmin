@@ -1,9 +1,5 @@
 ﻿namespace DynamicApi;
 
-/// <summary>
-/// 
-/// </summary>
-/// <typeparam name="T"></typeparam>
 public class ResponseResult<T>
 {
     /// <summary>

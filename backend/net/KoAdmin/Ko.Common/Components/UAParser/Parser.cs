@@ -14,6 +14,11 @@
 // limitations under the License.
 //
 
+using System.Reflection;
+using Microsoft.Extensions.Caching.Memory;
+using UAParser.Objects;
+using JsonSerializer = System.Text.Json.JsonSerializer;
+
 namespace UAParser;
 
 /// <summary>

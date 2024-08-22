@@ -1,8 +1,10 @@
-﻿namespace DynamicApi.Helpers;
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 
-/// <summary>
-/// 
-/// </summary>
+namespace DynamicApi.Helpers;
+
 internal static class ServiceCollectionExtensions
 {
     public static bool IsAdded<T>(this IServiceCollection services)

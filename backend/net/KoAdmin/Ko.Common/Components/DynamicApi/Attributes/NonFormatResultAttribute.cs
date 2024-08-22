@@ -1,4 +1,6 @@
-﻿namespace DynamicApi.Attributes;
+﻿using System;
+
+namespace DynamicApi.Attributes;
 
 /// <summary>
 /// 不格式化结果数据

@@ -1,26 +1,18 @@
-﻿namespace DynamicApi;
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
 
-/// <summary>
-/// 
-/// </summary>
+namespace DynamicApi;
+
 public static class MethodInfoExtension
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="method"></param>
-    /// <returns></returns>
     public static bool IsAsync(this MethodInfo method)
     {
         return method.ReturnType == typeof(Task)
             || (method.ReturnType.IsGenericType && method.ReturnType.GetGenericTypeDefinition() == typeof(Task<>));
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="method"></param>
-    /// <returns></returns>
     internal static Type GetReturnType(this MethodInfo method)
     {
         var isAsync = method.IsAsync();

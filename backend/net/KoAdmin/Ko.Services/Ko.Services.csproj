@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Sys\SysConfig\Dto\" />
+      <Folder Include="Sys\SysConfigService\Dto\" />
     </ItemGroup>
 
 </Project>
