@@ -1,0 +1,11 @@
+﻿nuget
+Yitter.IdGenerator
+https://www.nuget.org/packages/Yitter.IdGenerator
+
+代码库
+https://github.com/yitter/idgenerator
+
+
+2024年9月12日更新
+nuget  1.0.14
+github e06fc2db9379a68269021f3460464d06fde59eb8

@@ -1,0 +1,11 @@
+﻿nuget
+Swashbuckle.AspNetCore.Swagger
+https://www.nuget.org/packages/Swashbuckle.AspNetCore.Swagger
+
+代码库
+https://github.com/domaindrivendev/Swashbuckle.AspNetCore
+
+
+2024年9月12日更新
+nuget  6.7.3
+github 09a12829c60d2c124e96c21e14472b1bc5dcab17

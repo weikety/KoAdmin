@@ -7,6 +7,14 @@
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile />
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile />
+    </PropertyGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\Ko.Services\Ko.Services.csproj" />
     </ItemGroup>

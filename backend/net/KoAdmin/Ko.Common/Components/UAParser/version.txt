@@ -1,0 +1,11 @@
+﻿nuget
+UAParser.Core
+https://www.nuget.org/packages/UAParser.Core
+
+代码库
+https://github.com/w8tcha/uap-csharp/
+
+
+2024年9月12日更新
+nuget  4.0.4
+github 3bab181e135f90e02b47f89dc5e7b3cf2bf8eb94

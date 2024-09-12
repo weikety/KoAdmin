@@ -1,0 +1,11 @@
+﻿nuget
+Microsoft.OpenApi
+https://www.nuget.org/packages/Microsoft.OpenApi
+
+代码库
+https://github.com/Microsoft/OpenAPI.NET
+
+
+2024年9月12日更新
+nuget  1.6.21
+github 11925be70ed772f8cbede6f4a9b54d1559851a49

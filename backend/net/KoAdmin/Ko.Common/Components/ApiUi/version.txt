@@ -1,0 +1,10 @@
+﻿nuget
+FytApi.MUI
+https://www.nuget.org/packages/FytApi.MUI
+
+代码库
+https://gitee.com/feiyit/fytapi.mui
+
+2024年9月12日更新
+nuget  1.1.1
+github 56362201d90bac8364b72a689d985bff9a8a9907

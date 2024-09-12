@@ -1,5 +1,11 @@
+using System.Text.Json.Serialization;
+using System.Text.Json;
+
 namespace Ko.Common.Extensions;
 
+/// <summary>
+/// 时间操作扩展
+/// </summary>
 public static class DateTimeExtension
 {
     /// <summary>
@@ -29,5 +35,20 @@ public static class DateTimeExtension
         var day = (int)datetime.DayOfWeek;
         var week = new string[] { "周日", "周一", "周二", "周三", "周四", "周五", "周六" };
         return week[day];
+    }
+}
+
+/// <summary>
+/// API返回时间格式化
+/// </summary>
+public class DateTimeJsonConverter : JsonConverter<DateTime>
+{
+    public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        return DateTime.Parse(reader.GetString() ?? string.Empty);
+    }
+    public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+    {
+        writer.WriteStringValue(value.ToString("yyyy-MM-dd HH:mm:ss"));
     }
 }

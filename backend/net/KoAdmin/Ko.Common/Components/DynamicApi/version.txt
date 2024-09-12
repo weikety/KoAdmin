@@ -1,0 +1,11 @@
+﻿nuget
+Panda.DynamicWebApi
+https://www.nuget.org/packages/Panda.DynamicWebApi/
+
+代码库
+https://github.com/pda-team/Panda.DynamicWebApi 
+
+
+2024年9月12日更新
+nuget  1.2.2
+github efeaeb9af29a68187e6679f97ab01d7edc9bb362

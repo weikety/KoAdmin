@@ -1,5 +1,4 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+using System.Text.Json;
 
 namespace Ko.Common.Helper;
 
@@ -8,11 +7,6 @@ namespace Ko.Common.Helper;
 /// </summary>
 public class JsonHelper
 {
-    private static readonly JsonSerializerSettings _jsonSerializerSettings = new()
-    {
-        ContractResolver = new CamelCasePropertyNamesContractResolver(),
-        DateFormatString = "yyyy-MM-dd HH:mm:ss.FFFFFFFK"
-    };
 
     /// <summary>
     /// 序列化
@@ -22,7 +16,7 @@ public class JsonHelper
     /// <returns></returns>
     public static string Serialize<T>(T obj)
     {
-        return JsonConvert.SerializeObject(obj, typeof(T), _jsonSerializerSettings);
+        return JsonSerializer.Serialize(obj);
     }
 
     /// <summary>
@@ -33,17 +27,7 @@ public class JsonHelper
     /// <returns></returns>
     public static T Deserialize<T>(string json)
     {
-        return JsonConvert.DeserializeObject<T>(json, _jsonSerializerSettings);
+        return JsonSerializer.Deserialize<T>(json);
     }
 
-    /// <summary>
-    /// 反序列化
-    /// </summary>
-    /// <param name="json">json文本</param>
-    /// <param name="type">类型</param>
-    /// <returns></returns>
-    public static object Deserialize(string json, Type type)
-    {
-        return JsonConvert.DeserializeObject(json, type, _jsonSerializerSettings);
-    }
 }
